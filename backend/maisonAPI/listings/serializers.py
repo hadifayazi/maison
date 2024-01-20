@@ -12,7 +12,7 @@ class ListingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Listing
         fields = ['title', 'slug', 'city', 'zipcode', 'state', 'price',
-                  'sale_type', 'house_type', 'bedrooms', 'surface', 'images']
+                  'sale_type', 'house_type', 'bedrooms', 'surface', 'image']
 
 
 class ListingDetailSerializer(serializers.ModelSerializer):
