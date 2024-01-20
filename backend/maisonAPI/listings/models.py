@@ -5,7 +5,8 @@ from django.utils import timezone
 
 class ListingImage(models.Model):
     """Listing images."""
-    listing = models.ForeignKey('Listing', on_delete=models.CASCADE)
+    listing = models.ForeignKey(
+        'Listing', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='photos/%Y/%m/%d')
 
 
@@ -36,7 +37,8 @@ class Listing(models.Model):
     house_type = models.CharField(
         max_length=50, choices=HouseType.choices, default=HouseType.APPARTEMENT)
     surface = models.DecimalField(max_digits=10, decimal_places=2)
-    image = models.ManyToManyField(ListingImage, blank=True)
+    image = models.ManyToManyField(
+        ListingImage, blank=True, related_name='listings')
     is_published = models.BooleanField(default=True)
     list_date = models.DateTimeField(default=timezone.now, blank=True)
 
