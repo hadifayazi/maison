@@ -10,5 +10,5 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('api/v1/account/', include('account.urls')),
     path('api/v1/realtors/', include('realtors.urls')),
-    path('api/v1/listings', include('listings.urls')),
+    path('api/v1/listings/', include('listings.urls')),
 ]

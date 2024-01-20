@@ -1,5 +1,9 @@
 from django.contrib import admin
-from .models import Listing
+from .models import Listing, ListingImage
+
+
+class ListingImageInline(admin.TabularInline):
+    model = ListingImage
 
 
 class AdminListing(admin.ModelAdmin):
@@ -23,6 +27,7 @@ class AdminListing(admin.ModelAdmin):
     search_fields = ['title', 'description', 'address',
                      'city', 'zipcode', 'city', 'state', 'price']
     list_per_page = 20
+    inlines = [ListingImageInline]
 
 
 admin.site.register(Listing, AdminListing)
