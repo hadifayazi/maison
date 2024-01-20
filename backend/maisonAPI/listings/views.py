@@ -43,7 +43,12 @@ class ListCreateListingView(generics.ListCreateAPIView):
 class RetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Listing.objects.all()
     serializer_class = ListingDetailSerializer
-    lookup_field = 'pk'
+
+    def get_object(self):
+        lookup_field = self.lookup_field
+        if lookup_field in self.kwargs:
+            return self.queryset.get(**{lookup_field: self.kwargs[lookup_field]})
+        return super().get_object()
 
     def get_permissions(self):
         if self.request.method in ['PUT', 'PATCH', 'DELETE']:
