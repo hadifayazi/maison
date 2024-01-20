@@ -25,4 +25,4 @@ class AdminListing(admin.ModelAdmin):
     list_per_page = 20
 
 
-admin.site.register(Listing)
+admin.site.register(Listing, AdminListing)
