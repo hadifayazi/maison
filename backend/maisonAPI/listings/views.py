@@ -41,6 +41,19 @@ class ListCreateListingView(generics.ListCreateAPIView):
 
 
 class RetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    View for retrieving, updating, and deleting a single listing.
+
+    - For `GET` requests, retrieves details for a specific listing.
+    - For `PUT`, `PATCH`, and `DELETE` requests, requires admin user permissions.
+
+    Serializer:
+    - Uses `ListingDetailSerializer` for detailed representation.
+
+    Lookup Field:
+    - Supports both `pk` (primary key) and `slug` as lookup options.
+      If `slug` is provided in the URL, it's used for the lookup; otherwise, falls back to `pk`.
+    """
     queryset = Listing.objects.all()
     serializer_class = ListingDetailSerializer
 
