@@ -13,3 +13,14 @@ class ListCreateRealtor(generics.ListCreateAPIView):
         if self.request.method == 'POST':
             return [permissions.IsAdminUser()]
         return [permissions.AllowAny()]
+
+
+class RetrieveUpdateDestroyRealtorView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Realtor.objects.all()
+    serializer_class = RealtorSerializer
+    lookup_field = 'pk'
+
+    def get_permissions(self):
+        if self.request.method in ['POST', 'PUT', 'PATCH', 'DELETE']:
+            return [permissions.IsAdminUser()]
+        return [permissions.AllowAny()]
