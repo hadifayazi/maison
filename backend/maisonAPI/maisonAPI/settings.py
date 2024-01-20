@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'account',
     'realtors',
+    'listings',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -146,7 +148,7 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 3
+    'PAGE_SIZE': 5
 }
 
 CORS_ALLOW_ALL_ORIGINS = True
