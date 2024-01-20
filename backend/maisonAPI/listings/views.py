@@ -38,3 +38,14 @@ class ListCreateListingView(generics.ListCreateAPIView):
 
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
     filterset_class = ListingFilter
+
+
+class RetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Listing.objects.all()
+    serializer_class = ListingDetailSerializer
+    lookup_field = 'pk'
+
+    def get_permissions(self):
+        if self.request.method in ['PUT', 'PATCH', 'DELETE']:
+            return [permissions.IsAdminUser()]
+        return [permissions.AllowAny()]
