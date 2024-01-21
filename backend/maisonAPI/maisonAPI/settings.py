@@ -35,11 +35,14 @@ AUTH_USER_MODEL = 'account.CustomUser'
 
 
 # email settings
-EMAIL_BACKEND = 'django.core.mail.backend.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = os.environ.get('EMAIL_HOST')
 EMAIL_PORT = os.environ.get('EMAIL_PORT')
-EMAIL_USERNAME = os.environ.get('EMAIL_USERNAME')
-EMAIL_PASS = os.environ.get('EMAIL_PASS')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_TO = os.environ.get('EMAIL_TO')
+EMAIL_USE_TLS = True
+
 
 # Application definition
 
